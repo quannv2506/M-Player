@@ -1,35 +1,25 @@
 package com.project.mvvm.views.home
 
 import androidx.lifecycle.MutableLiveData
-import com.project.mvvm.BuildConfig
 import com.project.mvvm.bases.BaseViewModel
 import com.project.mvvm.bases.OutcomeState
-import com.project.mvvm.db.entity.Token
-import com.project.mvvm.networks.ServicesManager
-import com.project.mvvm.repository.TokenRepository
+import com.project.mvvm.repository.SongRepository
 import com.project.mvvm.utilities.Event
-import com.project.mvvm.utilities.LogUtils
+import com.project.mvvm.views.home.models.Song
 
-class HomeVM(private val tokenRepository: TokenRepository) : BaseViewModel() {
-    private val apiHome: APIHome = ServicesManager.builder(BuildConfig.BASE_URL_API)
+class HomeVM(private val songRepository: SongRepository) : BaseViewModel() {
 
-    private val _getTokensState = MutableLiveData<Event<OutcomeState<List<Token>>>>()
-    val getTokensState: MutableLiveData<Event<OutcomeState<List<Token>>>>
-        get() = _getTokensState
+    private val _getSongsResponse = MutableLiveData<Event<OutcomeState<List<Song>>>>()
+    val songTokensResponse: MutableLiveData<Event<OutcomeState<List<Song>>>>
+        get() = _getSongsResponse
 
-    fun getList() {
-        _getTokensState.postValue(Event(OutcomeState.Loading))
-        val myRequest = apiHome.getList().map {
-            val result = it.data ?: listOf()
-            tokenRepository.insertTokens(result)
-            result
-        }
-        execute(myRequest, onSuccess = {
-            LogUtils.d("+++++++++CheckListTokens: ${it.size}")
-            _getTokensState.postValue(Event(OutcomeState.Success(it)))
+    fun getAllMusicFromDevice(){
+        val myObservable = songRepository.loadSongs()
+        execute(myObservable, onSuccess = {
+            _getSongsResponse.postValue(Event(OutcomeState.Success(it)))
         }, onFailed = {
             it.printStackTrace()
-            _getTokensState.postValue(Event(OutcomeState.Error(it.message)))
+            _getSongsResponse.postValue(Event(OutcomeState.Error(it.message)))
         })
     }
 

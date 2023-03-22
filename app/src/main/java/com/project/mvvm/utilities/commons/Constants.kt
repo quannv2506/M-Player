@@ -15,6 +15,7 @@ class Constants {
 
         const val DEFAULT_FONT: String = "fonts/Roboto-Regular.ttf"
         const val PAGE_LIMIT: Int = 20
+        const val STOPPED = 0
 
         fun isTablet(context: Context): Boolean {
             return context.resources

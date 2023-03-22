@@ -6,6 +6,7 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import com.google.gson.GsonBuilder
 import com.project.mvvm.db.AppDatabase
 import com.project.mvvm.networks.ServicesManager.Companion.getUnsafeOkHttpClient
+import com.project.mvvm.repository.SongRepository
 import com.project.mvvm.repository.TokenRepository
 import com.project.mvvm.utilities.LogUtils
 import com.project.mvvm.utilities.UserDefaults
@@ -52,6 +53,7 @@ class MyApplication : Application() {
     private val repositoryModule = module {
         single { AppDatabase.getInstance(this@MyApplication) }
         single { TokenRepository(get()) }
+        single { SongRepository(get()) }
     }
 
     private val viewModelModule = module {

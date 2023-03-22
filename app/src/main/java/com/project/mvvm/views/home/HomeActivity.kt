@@ -1,15 +1,26 @@
 package com.project.mvvm.views.home
 
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.blankj.utilcode.util.PermissionUtils
 import com.project.mvvm.bases.BaseActivity
 import com.project.mvvm.bases.OutcomeState
 import com.project.mvvm.databinding.ActivitySplashBinding
 import com.project.mvvm.db.entity.Token
-import com.project.mvvm.utilities.*
+import com.project.mvvm.utilities.EndlessRecyclerViewScrollListener
+import com.project.mvvm.utilities.LogUtils
+import com.project.mvvm.utilities.observeEventUnhandled
+import com.project.mvvm.utilities.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : BaseActivity<ActivitySplashBinding>() {
+    companion object{
+        private const val MY_REQUEST_PERMISSION = 10
+    }
 
     private val homeVM: HomeVM by viewModel()
     private var tokenAdapter: TokenAdapter? = null
@@ -26,46 +37,30 @@ class HomeActivity : BaseActivity<ActivitySplashBinding>() {
     override fun observeHandle() {
         super.observeHandle()
         //cách 1
-        homeVM.getTokensState.observeEventUnhandled(this) { state ->
+        homeVM.songTokensResponse.observeEventUnhandled(this) { state ->
             when (state) {
                 OutcomeState.Loading -> {
-                    LogUtils.d("++++++++++Api loading:")
+                    LogUtils.d("++++++++++GetAllMusic loading:")
                 }
                 is OutcomeState.Error -> {
-                    LogUtils.d("++++++++++Api failed:")
+                    LogUtils.d("++++++++++GetAllMusic failed:")
                 }
                 is OutcomeState.Success -> {
-                    LogUtils.d("++++++++++Api success:")
                     val result = state.result
-                    tokenAdapter?.submitList(result.subList(0, 20))
+                    LogUtils.d("++++++++++GetAllMusic success: $result")
                 }
             }
         }
-        //cách 2
-        /*homeVM.getTokensState.observe(this, EventObserver { state ->
-            when (state) {
-                OutcomeState.Loading -> {
-                    LogUtils.d("++++++++++Api loading:")
-                }
-                is OutcomeState.Error -> {
-                    LogUtils.d("++++++++++Api failed:")
-                }
-                is OutcomeState.Success -> {
-                    LogUtils.d("++++++++++Api success:")
-                    val result = state.result
-                    tokenAdapter?.submitList(result.subList(0, 20))
-                }
-            }
-        })*/
-
-        homeVM.getList()
     }
 
+    override fun onResume() {
+        super.onResume()
+        checkPermission()
+    }
 
     override fun setupEventControl() {
         super.setupEventControl()
         rootView.refreshLayout.setOnRefreshListener {
-            homeVM.getList()
         }
     }
 
@@ -97,6 +92,37 @@ class HomeActivity : BaseActivity<ActivitySplashBinding>() {
             adapter = tokenAdapter
             layoutManager = mLayoutManager
             addOnScrollListener(scrollListener as EndlessRecyclerViewScrollListener)
+        }
+    }
+
+    private fun checkPermission() {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                MY_REQUEST_PERMISSION
+            )
+        } else {
+            homeVM.getAllMusicFromDevice()
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == MY_REQUEST_PERMISSION){
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                homeVM.getAllMusicFromDevice()
+            } else {
+                toast("Bạn cần cấp quyền truy cập bộ nhớ")
+            }
         }
     }
 
