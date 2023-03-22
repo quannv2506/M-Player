@@ -1,0 +1,74 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MMC" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="snackbarStyle">@style/Widget.App.Snackbar</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="colorControlNormal">@color/black</item>
+        <item name="colorControlActivated">@color/black</item>
+        <item name="colorControlHighlight">@color/black</item>
+        <item name="android:navigationBarColor">
+            @android:color/transparent
+        </item>
+
+        <!-- Optional: set to transparent if your app is drawing behind the status bar. -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <!-- Optional: set the status bar light and content dark. -->
+        <item name="android:windowLightStatusBar">true</item>
+
+    </style>
+
+    <style name="CustomDialogTheme" parent="@style/Dialog_Theme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="Dialog_Theme" parent="@android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:windowEnterAnimation">@anim/anim_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_fade_out</item>
+    </style>
+
+    <style name="CustomDialogBottom" parent="@style/Dialog_Bottom">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="Dialog_Bottom" parent="@android:style/Theme.Translucent.NoTitleBar">
+        <item name="android:windowEnterAnimation">@anim/no_anim</item>
+        <item name="android:windowExitAnimation">@anim/no_anim</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Widget.App.Snackbar" parent="Widget.Design.Snackbar">
+        <item name="android:layout_margin">@null</item>
+        <!-- Use default Snackbar margins for top/left/right -->
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:layout_marginLeft">@dimen/mtrl_snackbar_margin</item>
+        <item name="android:layout_marginRight">@dimen/mtrl_snackbar_margin</item>
+        <!-- Custom bottom margin, this could work for top/left/right too -->
+    </style>
+
+    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+        <item name="android:windowIsFloating">false</item>
+        <!--        <item name="android:windowSoftInputMode">adjustResize|stateVisible</item>-->
+    </style>
+
+    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <!--        <item name="android:background">@drawable/bg_corner_bottom_sheet</item>-->
+        <item name="android:background">@color/transparency</item>
+        <!--        <item name="android:statusBarColor">@color/transparency</item>-->
+        <!--        <item name="android:windowIsFloating">true</item>-->
+    </style>
+
+    <style name="Theme.MMC.Fullscreen" parent="Theme.MMC">
+        <item name="android:actionBarStyle">@style/Widget.Theme.MMC.ActionBar.Fullscreen</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="ThemeOverlay.BaseMVVMandroid.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
+
+</resources>

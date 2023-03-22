@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Text.Regular" parent="Widget.AppCompat.TextView">
+        <item name="font_type">@string/Type_Regular</item>
+    </style>
+
+    <style name="Text.Bold" parent="Widget.AppCompat.TextView">
+        <item name="font_type">@string/Type_Bold</item>
+    </style>
+
+    <style name="Text.Medium" parent="Widget.AppCompat.TextView">
+        <item name="font_type">@string/Type_Medium</item>
+    </style>
+
+    <style name="Text.Italic" parent="Widget.AppCompat.TextView">
+        <item name="font_type">@string/Type_Italic</item>
+    </style>
+
+    <style name="Text.Light" parent="Widget.AppCompat.TextView">
+        <item name="font_type">@string/Type_Light</item>
+    </style>
+
+    <style name="Text.LightItalic" parent="Widget.AppCompat.TextView">
+        <item name="font_type">@string/Type_LightItalic</item>
+    </style>
+
+    <style name="Widget.Theme.MMC.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="Widget.Theme.MMC.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+</resources>

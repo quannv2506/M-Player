@@ -1,0 +1,4 @@
+rootProject.name = "BaseMVVM-android"
+include ':app'
+include ':utilcode'
+include ':compressor'

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../../../../../../layout/custom_preview.xml" value="0.3859375" />
+        <entry key="../../../../../../../.gradle/caches/transforms-3/ff48ff44274ee52cd1b066a5ab4526cc/transformed/EyeFireSDK-debug/res/drawable/bg_blue_rd_23.xml" value="0.1755" />
+        <entry key="../../../../../../../.gradle/caches/transforms-3/ff48ff44274ee52cd1b066a5ab4526cc/transformed/EyeFireSDK-debug/res/layout/activity_coming_call.xml" value="0.22135416666666666" />
+        <entry key="../../../../../../../.gradle/caches/transforms-3/ff48ff44274ee52cd1b066a5ab4526cc/transformed/EyeFireSDK-debug/res/layout/activity_make_call.xml" value="0.22135416666666666" />
+        <entry key="../../../../../layout/custom_preview.xml" value="0.34427083333333336" />
+        <entry key="EyeFireSDK/src/main/res/layout-land/camera_recognize_layout.xml" value="0.4398826979472141" />
+        <entry key="EyeFireSDK/src/main/res/layout/camera_recognize_layout.xml" value="0.359375" />
+        <entry key="EyeFireSDK/src/main/res/layout/camera_training_layout.xml" value="0.30927835051546393" />
+        <entry key="EyeFireSDK/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2325" />
+        <entry key="app/src/main/res/drawable/background_alert.xml" value="0.3015" />
+        <entry key="app/src/main/res/drawable/bg_border_light.xml" value="0.2485" />
+        <entry key="app/src/main/res/drawable/bg_btn_logout.xml" value="0.2485" />
+        <entry key="app/src/main/res/drawable/bg_btn_report.xml" value="0.2795" />
+        <entry key="app/src/main/res/drawable/bg_button_blue.xml" value="0.193" />
+        <entry key="app/src/main/res/drawable/bg_button_red.xml" value="0.251" />
+        <entry key="app/src/main/res/drawable/bg_circle_blue.xml" value="0.2485" />
+        <entry key="app/src/main/res/drawable/bg_dialog_border.xml" value="0.2685" />
+        <entry key="app/src/main/res/drawable/bg_editext_light.xml" value="0.193" />
+        <entry key="app/src/main/res/drawable/bg_header_detai_new.xml" value="0.3145" />
+        <entry key="app/src/main/res/drawable/bg_layout_item_language.xml" value="0.208" />
+        <entry key="app/src/main/res/drawable/bg_menu_bar.xml" value="0.2685" />
+        <entry key="app/src/main/res/drawable/bg_numb_notify.xml" value="0.2685" />
+        <entry key="app/src/main/res/drawable/bg_search.xml" value="0.243" />
+        <entry key="app/src/main/res/drawable/bg_tab_selector.xml" value="0.2595" />
+        <entry key="app/src/main/res/drawable/ic_codicon_add.xml" value="0.2485" />
+        <entry key="app/src/main/res/drawable/ic_icon_add_student.xml" value="0.2485" />
+        <entry key="app/src/main/res/drawable/ic_icon_back_light.xml" value="0.2685" />
+        <entry key="app/src/main/res/drawable/ic_icon_change_password.xml" value="0.2485" />
+        <entry key="app/src/main/res/drawable/ic_icon_close.xml" value="0.3025" />
+        <entry key="app/src/main/res/drawable/ic_icon_close_light.xml" value="0.3025" />
+        <entry key="app/src/main/res/drawable/ic_icon_default_no_image.xml" value="0.3345" />
+        <entry key="app/src/main/res/drawable/ic_icon_logo_light.xml" value="0.199" />
+        <entry key="app/src/main/res/drawable/ic_icon_notify.xml" value="0.2135" />
+        <entry key="app/src/main/res/drawable/ic_icon_rank_individual_2.xml" value="0.2595" />
+        <entry key="app/src/main/res/drawable/ic_icon_recapture.xml" value="0.3395" />
+        <entry key="app/src/main/res/drawable/ic_icon_report_pupil.xml" value="0.3005" />
+        <entry key="app/src/main/res/drawable/ic_icon_scan_face.xml" value="0.312" />
+        <entry key="app/src/main/res/drawable/ic_icon_scan_selected.xml" value="0.2685" />
+        <entry key="app/src/main/res/drawable/ic_icon_selected.xml" value="0.2275" />
+        <entry key="app/src/main/res/drawable/ic_icon_selected_language.xml" value="0.176" />
+        <entry key="app/src/main/res/drawable/ic_icon_student_code.xml" value="0.2805" />
+        <entry key="app/src/main/res/drawable/ic_icon_thumbnail_image.xml" value="0.2485" />
+        <entry key="app/src/main/res/drawable/ic_icon_visible_password.xml" value="0.2305" />
+        <entry key="app/src/main/res/drawable/ic_item_notify.xml" value="0.232" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.193" />
+        <entry key="app/src/main/res/drawable/tabbar_chat.xml" value="0.325653076171875" />
+        <entry key="app/src/main/res/drawable/tabbar_top.xml" value="0.2685" />
+        <entry key="app/src/main/res/layout/activities/layout/activity_authentication.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/activities/layout/activity_change_language.xml" value="0.2949978623343309" />
+        <entry key="app/src/main/res/layout/activities/layout/activity_main.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/activities/layout/activity_scan_face.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/activities/layout/activity_splash.xml" value="0.17568359374999998" />
+        <entry key="app/src/main/res/layout/activity_authentication.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3458333333333333" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.1947998046875" />
+        <entry key="app/src/main/res/layout/activity_scan_face.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/customs/drawable/ic__18256e35da0fedd2f793631.xml" value="0.3085" />
+        <entry key="app/src/main/res/layout/customs/drawable/ic_icon_notify.xml" value="0.2135" />
+        <entry key="app/src/main/res/layout/customs/layout/icon_notify_layout.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/customs/layout/item_header_news.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/customs/layout/item_notify.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/customs/layout/item_student_info.xml" value="0.2949978623343309" />
+        <entry key="app/src/main/res/layout/customs/layout/item_sub_news.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/customs/layout/item_top_rank.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/customs/layout/layout_header_tab.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/dialogs/layout/dialog_choise_student_scan.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/dialogs/layout/dialog_custom_loading.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/dialogs/layout/dialog_error.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/dialogs/layout/dialog_has_student.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/dialogs/layout/dialog_no_student.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/dialogs/layout/dialog_notify.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/dialogs/layout/dialog_picker_image.xml" value="0.2949978623343309" />
+        <entry key="app/src/main/res/layout/fragments/layout/activity_scan_face.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_add_new_member.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_add_new_student.xml" value="0.2949978623343309" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_change_language.xml" value="0.2949978623343309" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_change_password.xml" value="0.2949978623343309" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_chat_list_member.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_choise_student_scan.xml" value="0.2949978623343309" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_collect_face_register.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_create_student.xml" value="0.2949978623343309" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_detail_chat.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_detail_new.xml" value="0.26198272705078113" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_edit_profile.xml" value="0.2949978623343309" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_edit_student.xml" value="0.2949978623343309" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_forgot_password.xml" value="0.2949978623343309" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_list.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_login.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_login_face.xml" value="0.24426422119140626" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_main_chat.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_main_new.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_main_profile.xml" value="0.3390304565429687" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_main_scan_face.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_main_toprank.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_notification.xml" value="0.2901046752929688" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_register.xml" value="0.26127819548872183" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_register_face.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_register_face_success.xml" value="0.359375" />
+        <entry key="app/src/main/res/layout/fragments/layout/fragment_report_scan.xml" value="0.2949978623343309" />
+        <entry key="app/src/main/res/layout/login_activity.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/register_activity.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/menu/tabbar_menu.xml" value="0.359375" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.193" />
+        <entry key="app/src/main/res/xml/file_paths.xml" value="0.1718683197947841" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
