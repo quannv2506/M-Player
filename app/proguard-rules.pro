@@ -531,10 +531,10 @@ public static final android.os.Parcelable$Creator *;
 -dontwarn io.realm.**
 
 #### Dont warn JNI method
--keep class com.project.engine.* { *; }
+-keep class com.quannv.engine.* { *; }
 -dontwarn com.eyefire.engine.**
 
 
 #### Dont warn localization method
--keep class com.project.localization.** { *; }
+-keep class com.quannv.localization.** { *; }
 -dontwarn com.tcom.localization.**

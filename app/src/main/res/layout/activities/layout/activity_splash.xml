@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.project.mvvm.customizes.CustomEditTextFonts
+            <com.quannv.music.customizes.CustomEditTextFonts
                 android:id="@+id/txtPowerBy"
                 style="@style/Text.Medium"
                 android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                 android:layout_weight="1"
                 tools:listitem="@layout/item_token" />
 
-            <com.project.mvvm.customizes.CustomTextViewFonts
+            <com.quannv.music.customizes.CustomTextViewFonts
                 android:id="@+id/btnOk"
                 style="@style/Text.Bold"
                 android:layout_width="match_parent"

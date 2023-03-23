@@ -1,4 +1,4 @@
-rootProject.name = "BaseMVVM-android"
+rootProject.name = "DemoMusicApp"
 include ':app'
 include ':utilcode'
 include ':compressor'
