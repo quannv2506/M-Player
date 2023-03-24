@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="album"
+            type="com.quannv.music.models.Album" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:background="@color/color_menu">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/imgAlbum"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            app:layout_constraintDimensionRatio="1"
+            app:riv_corner_radius="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@color/black" />
+
+        <com.quannv.music.customizes.CustomTextViewFonts
+            android:id="@+id/tvName"
+            style="@style/Text.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{album.album}"
+            android:textColor="@color/text_white_color"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/imgAlbum"
+            tools:text="Name" />
+
+        <com.quannv.music.customizes.CustomTextViewFonts
+            android:id="@+id/tvArtist"
+            style="@style/Text.Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@{album.artist}"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/text_gray_color"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            tools:text="Name" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

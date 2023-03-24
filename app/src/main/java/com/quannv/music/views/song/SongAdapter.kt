@@ -1,16 +1,17 @@
-package com.quannv.music.views.home
+package com.quannv.music.views.song
 
+import android.content.ContentUris
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import com.quannv.music.BR
+import com.bumptech.glide.Glide
 import com.quannv.music.bases.DataBoundListAdapter
 import com.quannv.music.databinding.ItemSongBinding
-import com.quannv.music.databinding.ItemTokenBinding
-import com.quannv.music.db.entity.Token
 import com.quannv.music.utilities.clickWithDebounce
-import com.quannv.music.views.home.models.Song
+import com.quannv.music.utilities.context
+import com.quannv.music.models.Song
 
 class SongAdapter(
     private val mContext: Context,
@@ -49,6 +50,9 @@ class SongAdapter(
     override fun bind(binding: ItemSongBinding, item: Song, position: Int) {
         binding.apply {
             song = item
+            val artworkUri = Uri.parse("content://media/external/audio/albumart")
+            val uriArt = ContentUris.withAppendedId(artworkUri, item.albumId ?: 0L)
+            Glide.with(context).load(uriArt).into(imgSong)
             root.clickWithDebounce {
                 onItemClick?.invoke(item)
             }

@@ -6,16 +6,15 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.quannv.music.R
 import com.quannv.music.bases.BaseActivity
-import com.quannv.music.bases.OutcomeState
 import com.quannv.music.databinding.ActivityHomeBinding
-import com.quannv.music.utilities.LogUtils
 import com.quannv.music.utilities.clickWithDebounce
-import com.quannv.music.utilities.observeEventUnhandled
 import com.quannv.music.utilities.toast
+import com.quannv.music.viewmodel.AlbumViewModel
+import com.quannv.music.viewmodel.ArtistViewModel
+import com.quannv.music.viewmodel.SongViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : BaseActivity<ActivityHomeBinding>() {
@@ -24,6 +23,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     }
 
     private val songViewModel: SongViewModel by viewModel()
+    private val albumViewModel: AlbumViewModel by viewModel()
+    private val artistViewModel: ArtistViewModel by viewModel()
     private lateinit var navListBtn: List<View>
     private lateinit var navListText: List<TextView>
     private lateinit var navListLine: List<View>
@@ -78,21 +79,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
 
     override fun observeHandle() {
         super.observeHandle()
-        //cách 1
-        songViewModel.songTokensResponse.observeEventUnhandled(this) { state ->
-            when (state) {
-                OutcomeState.Loading -> {
-                    LogUtils.d("++++++++++GetAllMusic loading:")
-                }
-                is OutcomeState.Error -> {
-                    LogUtils.d("++++++++++GetAllMusic failed:")
-                }
-                is OutcomeState.Success -> {
-                    val result = state.result
-                    LogUtils.d("++++++++++GetAllMusic success: $result")
-                }
-            }
-        }
     }
 
     override fun onResume() {
@@ -101,7 +87,11 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     }
 
     private fun setText() {
-
+        with(binding) {
+            tvSong.text = getString(R.string.str_songs)
+            tvAlbum.text = getString(R.string.str_albums)
+            tvArtist.text = getString(R.string.str_artists)
+        }
     }
 
     private fun setAdapter() {
@@ -118,6 +108,12 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         }
     }
 
+    private fun getData() {
+        songViewModel.getAllMusicFromDevice()
+        albumViewModel.getAllAlbums()
+        artistViewModel.getAllArtists()
+    }
+
     private fun checkPermission() {
         if (ContextCompat.checkSelfPermission(
                 this,
@@ -130,7 +126,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
                 MY_REQUEST_PERMISSION
             )
         } else {
-            songViewModel.getAllMusicFromDevice()
+            getData()
         }
     }
 
@@ -142,7 +138,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == MY_REQUEST_PERMISSION) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                songViewModel.getAllMusicFromDevice()
+                getData()
             } else {
                 toast("Bạn cần cấp quyền truy cập bộ nhớ")
             }

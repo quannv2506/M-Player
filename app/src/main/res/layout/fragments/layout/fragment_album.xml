@@ -6,11 +6,17 @@
     android:clickable="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:background="@color/white"
+    android:background="@color/color_main_bg"
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSong"
+        android:id="@+id/rvAlbum"
+        android:paddingTop="16dp"
+        tools:listitem="@layout/item_album"
+        android:paddingHorizontal="24dp"
+        android:clipToPadding="false"
+        app:spanCount="2"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

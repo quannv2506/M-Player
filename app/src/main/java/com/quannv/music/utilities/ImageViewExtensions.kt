@@ -21,7 +21,7 @@ infix fun ImageView.withImageResource(@DrawableRes imageRes: Int?) {
 }
 
 fun ImageView.load(url: String?){
-    if (url.isNullOrBlank()) this.setImageResource(R.drawable.icon_default_token)
+    if (url.isNullOrBlank()) this.setImageResource(R.drawable.ic_placeholder_default)
     try {
         Glide.with(this)
             .load(url).into(this)

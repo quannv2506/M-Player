@@ -1,11 +1,11 @@
-package com.quannv.music.views.home
+package com.quannv.music.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.quannv.music.bases.BaseViewModel
 import com.quannv.music.bases.OutcomeState
 import com.quannv.music.repository.SongRepository
 import com.quannv.music.utilities.Event
-import com.quannv.music.views.home.models.Song
+import com.quannv.music.models.Song
 
 class SongViewModel(private val songRepository: SongRepository) : BaseViewModel() {
 

@@ -9,7 +9,7 @@
 
         <variable
             name="song"
-            type="com.quannv.music.views.home.models.Song" />
+            type="com.quannv.music.models.Song" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,7 +27,7 @@
             android:layout_marginEnd="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/icon_default_token" />
+            tools:src="@drawable/ic_placeholder_default" />
 
         <com.quannv.music.customizes.CustomTextViewFonts
             android:id="@+id/tvName"
@@ -37,16 +37,18 @@
             android:layout_marginHorizontal="8dp"
             android:textColor="@color/text_white_color"
             android:textSize="16sp"
+            android:text="@{song.title}"
             app:layout_constraintBottom_toTopOf="@id/tvArtist"
             app:layout_constraintEnd_toStartOf="@id/imgMenu"
             app:layout_constraintStart_toEndOf="@id/imgSong"
             app:layout_constraintTop_toTopOf="@id/imgSong"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:text="BSC" />
+            tools:text="Name" />
 
         <com.quannv.music.customizes.CustomTextViewFonts
             android:id="@+id/tvArtist"
             style="@style/Text.Regular"
+            android:text="@{song.artist}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -56,7 +58,7 @@
             app:layout_constraintEnd_toEndOf="@id/tvName"
             app:layout_constraintStart_toStartOf="@id/tvName"
             app:layout_constraintTop_toBottomOf="@id/tvName"
-            tools:text="Bitcoin" />
+            tools:text="Artist" />
 
         <ImageView
             android:id="@+id/imgMenu"

@@ -3,7 +3,7 @@ package com.quannv.music.views.home
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.quannv.music.views.song.AlbumFragment
+import com.quannv.music.views.album.AlbumFragment
 import com.quannv.music.views.song.ArtistFragment
 import com.quannv.music.views.song.SongFragment
 

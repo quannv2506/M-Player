@@ -1,12 +1,12 @@
 package com.quannv.music.repository
 
-import android.content.Context
+import android.content.ContentResolver
 import android.database.Cursor
 import android.provider.MediaStore
-import com.quannv.music.views.home.models.Song
+import com.quannv.music.models.Song
 import io.reactivex.Observable
 
-class SongRepository(private val context: Context) {
+class SongRepository(private val contentResolver: ContentResolver) {
 
     private fun convertToSong(cursor: Cursor): Song {
         val song = Song()
@@ -35,11 +35,12 @@ class SongRepository(private val context: Context) {
                 MediaStore.Audio.Media.DISPLAY_NAME,
                 MediaStore.Audio.Media.DURATION,
             )
-            val cursor = context.contentResolver.query(
+            val cursor = contentResolver.query(
                 musicUri, projection, selection, null, null
             )
             while (cursor?.moveToNext() == true) {
-                songs.add(convertToSong(cursor))
+                val song = convertToSong(cursor)
+                songs.add(song)
             }
             songs
         }

@@ -150,12 +150,7 @@ dependencies {
     // Koin main features for Android
     implementation "io.insert-koin:koin-android:3.3.2"
 
-/*    //androidx fragment
-    def fragment_version = "1.5.4"
-    implementation "androidx.fragment:fragment-ktx:$fragment_version"
-
-    //androidx activity
-    def activity_version = "1.6.1"
-    implementation "androidx.activity:activity-ktx:$activity_version"*/
+    //rounded image
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 
 }
