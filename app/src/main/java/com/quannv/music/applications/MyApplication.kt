@@ -11,7 +11,7 @@ import com.quannv.music.repository.TokenRepository
 import com.quannv.music.utilities.LogUtils
 import com.quannv.music.utilities.UserDefaults
 import com.quannv.music.utilities.Utils
-import com.quannv.music.views.home.HomeVM
+import com.quannv.music.views.home.SongViewModel
 import io.reactivex.plugins.RxJavaPlugins
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
@@ -57,7 +57,7 @@ class MyApplication : Application() {
     }
 
     private val viewModelModule = module {
-        viewModel { HomeVM(get()) }
+        viewModel { SongViewModel(get()) }
     }
 
     private val okHttpModule = module {

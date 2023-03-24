@@ -8,5 +8,8 @@
 
     <string name="str_error_occurs">Có lỗi xảy ra. Vui lòng kiểm tra lại.</string>
     <string name="str_error_not_found_server">Không tìm thấy máy chủ.</string>
+    <string name="common_yesterday">Hôm qua</string>
+    <string name="str_songs">Bài hát</string>
+    <string name="str_artists">Nghệ sĩ</string>
 
 </resources>

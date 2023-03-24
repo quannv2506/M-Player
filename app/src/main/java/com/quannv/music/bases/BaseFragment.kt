@@ -25,7 +25,7 @@ import org.greenrobot.eventbus.ThreadMode
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
-    open lateinit var rootView: VB
+    open lateinit var binding: VB
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -61,14 +61,14 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        rootView = getViewBinding(inflater)
+        binding = getViewBinding(inflater)
 
         observeHandle()
 
         setupView()
 
         setupEventControl()
-        return rootView.root
+        return binding.root
     }
 
     open fun setupEventControl() {
@@ -77,7 +77,7 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     @SuppressLint("ClickableViewAccessibility")
     open fun setupView() {
-        rootView.root.setOnTouchListener { view, motionEvent ->
+        binding.root.setOnTouchListener { view, motionEvent ->
             if ((motionEvent.action == MotionEvent.ACTION_UP) && !(view is EditText))
                 activity?.let { Utils.shared.showHideKeyBoard(it, false) }
             return@setOnTouchListener true

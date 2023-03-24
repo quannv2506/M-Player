@@ -11,11 +11,12 @@ class SongRepository(private val context: Context) {
     private fun convertToSong(cursor: Cursor): Song {
         val song = Song()
         song.id = cursor.getString(0)
-        song.artist = cursor.getString(1)
-        song.title = cursor.getString(2)
-        song.mData = cursor.getString(3)
-        song.displayName = cursor.getString(4)
-        song.duration = cursor.getString(5)
+        song.albumId = cursor.getLong(1)
+        song.artist = cursor.getString(2)
+        song.title = cursor.getString(3)
+        song.mData = cursor.getString(4)
+        song.displayName = cursor.getString(5)
+        song.duration = cursor.getString(6)
         song.isPlaying = false
         return song
     }
@@ -27,6 +28,7 @@ class SongRepository(private val context: Context) {
             val musicUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
             val projection = arrayOf(
                 MediaStore.Audio.Media._ID,
+                MediaStore.Audio.Media.ALBUM_ID,
                 MediaStore.Audio.Media.ARTIST,
                 MediaStore.Audio.Media.TITLE,
                 MediaStore.Audio.Media.DATA,

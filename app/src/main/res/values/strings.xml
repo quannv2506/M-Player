@@ -12,5 +12,8 @@
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="str_songs">Songs</string>
+    <string name="str_albums" translatable="false">Albums</string>
+    <string name="str_artists">Artists</string>
 
 </resources>

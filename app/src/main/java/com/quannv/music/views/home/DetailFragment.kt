@@ -10,7 +10,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailFragment : BaseFragment<FragmentDetailBinding>() {
 
-    private val homeVM: HomeVM by viewModel<HomeVM>()
+    private val songViewModel: SongViewModel by viewModel<SongViewModel>()
 
     private val repository: TokenRepository by inject()
 

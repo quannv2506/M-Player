@@ -299,7 +299,7 @@ fun View.clickWithDebounce(debounceTime: Long = 500L, action: () -> Unit) {
     }
 }
 
-fun LinearLayout.addDotsPages(count: Int) {
+/*fun LinearLayout.addDotsPages(count: Int) {
     var imageView: ImageView
     for (i in 0 until count) {
         imageView = ImageView(this.context)
@@ -336,4 +336,4 @@ fun LinearLayout.updateDotsPagerTransaction(currentPosition: Int) {
     } catch (e: Exception) {
         e.printStackTrace()
     }
-}
+}*/

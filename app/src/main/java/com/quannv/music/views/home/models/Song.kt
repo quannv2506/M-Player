@@ -6,6 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 class Song: Parcelable {
     var id: String? = ""
+    var albumId: Long ?= 0L
     var artist: String? = ""
     var title: String? = ""
     var mData: String? = ""

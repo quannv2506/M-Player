@@ -2,30 +2,32 @@ package com.quannv.music.views.home
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.view.View
+import android.widget.TextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.quannv.music.R
 import com.quannv.music.bases.BaseActivity
 import com.quannv.music.bases.OutcomeState
-import com.quannv.music.databinding.ActivitySplashBinding
-import com.quannv.music.db.entity.Token
-import com.quannv.music.utilities.EndlessRecyclerViewScrollListener
+import com.quannv.music.databinding.ActivityHomeBinding
 import com.quannv.music.utilities.LogUtils
+import com.quannv.music.utilities.clickWithDebounce
 import com.quannv.music.utilities.observeEventUnhandled
 import com.quannv.music.utilities.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeActivity : BaseActivity<ActivitySplashBinding>() {
-    companion object{
+class HomeActivity : BaseActivity<ActivityHomeBinding>() {
+    companion object {
         private const val MY_REQUEST_PERMISSION = 10
     }
 
-    private val homeVM: HomeVM by viewModel()
-    private var tokenAdapter: TokenAdapter? = null
-    private var allTokens: List<Token> = emptyList()
-    private var scrollListener: EndlessRecyclerViewScrollListener? = null
-    private var page = 1
+    private val songViewModel: SongViewModel by viewModel()
+    private lateinit var navListBtn: List<View>
+    private lateinit var navListText: List<TextView>
+    private lateinit var navListLine: List<View>
+    private var homePagerAdapter: HomePagerAdapter? = null
 
     override fun setupView() {
         super.setupView()
@@ -33,10 +35,51 @@ class HomeActivity : BaseActivity<ActivitySplashBinding>() {
         setAdapter()
     }
 
+    override fun setupEventControl() {
+        super.setupEventControl()
+        navListBtn = listOf(
+            binding.btnSong,
+            binding.btnAlbum,
+            binding.btnArtist
+        )
+        navListText = listOf(
+            binding.tvSong,
+            binding.tvAlbum,
+            binding.tvArtist
+        )
+        navListLine = listOf(
+            binding.lineSong,
+            binding.lineAlbum,
+            binding.lineArtist
+        )
+        navListBtn.forEachIndexed { index, view ->
+            view.clickWithDebounce {
+                updateCurrentTab(index)
+            }
+        }
+        binding.imgMenu.clickWithDebounce {
+
+        }
+    }
+
+    private fun updateCurrentTab(index: Int) {
+        //line
+        navListLine.forEach {
+            it.visibility = View.INVISIBLE
+        }
+        navListLine[index].visibility = View.VISIBLE
+        //text
+        navListText.forEach {
+            it.setTextColor(getColor(R.color.text_gray_color))
+        }
+        navListText[index].setTextColor(getColor(R.color.text_white_color))
+        binding.viewPager.setCurrentItem(index, true)
+    }
+
     override fun observeHandle() {
         super.observeHandle()
         //cách 1
-        homeVM.songTokensResponse.observeEventUnhandled(this) { state ->
+        songViewModel.songTokensResponse.observeEventUnhandled(this) { state ->
             when (state) {
                 OutcomeState.Loading -> {
                     LogUtils.d("++++++++++GetAllMusic loading:")
@@ -57,40 +100,21 @@ class HomeActivity : BaseActivity<ActivitySplashBinding>() {
         checkPermission()
     }
 
-    override fun setupEventControl() {
-        super.setupEventControl()
-        rootView.refreshLayout.setOnRefreshListener {
-        }
-    }
-
     private fun setText() {
 
     }
 
     private fun setAdapter() {
-        tokenAdapter = TokenAdapter(this, onItemClick = {
-            toast(it.name)
-        })
-        val mLayoutManager = LinearLayoutManager(this)
-        scrollListener = object : EndlessRecyclerViewScrollListener(mLayoutManager) {
-            override fun onLoadMore(totalItemCount: Int, view: RecyclerView?) {
-                if ((tokenAdapter?.getList()?.size ?: 0) < allTokens.size) {
-                    val startIndex = tokenAdapter?.getList()?.size ?: 0
-                    var endIndex = startIndex.plus(20)
-                    if (allTokens.size - endIndex < 20)
-                        endIndex = allTokens.size
-                    val listResultToken =
-                        tokenAdapter?.getList()?.plus(allTokens.subList(startIndex, endIndex))
-                    tokenAdapter?.submitList(listResultToken)
-                    scrollListener?.onLoadDone()
-                    page++
+        homePagerAdapter = HomePagerAdapter(this)
+        binding.viewPager.apply {
+            offscreenPageLimit = 3
+            adapter = homePagerAdapter
+            registerOnPageChangeCallback(object : OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    updateCurrentTab(position)
                 }
-            }
-        }
-        rootView.rvToken.apply {
-            adapter = tokenAdapter
-            layoutManager = mLayoutManager
-            addOnScrollListener(scrollListener as EndlessRecyclerViewScrollListener)
+            })
         }
     }
 
@@ -106,7 +130,7 @@ class HomeActivity : BaseActivity<ActivitySplashBinding>() {
                 MY_REQUEST_PERMISSION
             )
         } else {
-            homeVM.getAllMusicFromDevice()
+            songViewModel.getAllMusicFromDevice()
         }
     }
 
@@ -116,17 +140,17 @@ class HomeActivity : BaseActivity<ActivitySplashBinding>() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == MY_REQUEST_PERMISSION){
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                homeVM.getAllMusicFromDevice()
+        if (requestCode == MY_REQUEST_PERMISSION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                songViewModel.getAllMusicFromDevice()
             } else {
                 toast("Bạn cần cấp quyền truy cập bộ nhớ")
             }
         }
     }
 
-    override fun getViewBinding(): ActivitySplashBinding {
-        return ActivitySplashBinding.inflate(layoutInflater)
+    override fun getViewBinding(): ActivityHomeBinding {
+        return ActivityHomeBinding.inflate(layoutInflater)
     }
 
     override fun onLanguageChanged() {

@@ -7,7 +7,7 @@ import com.quannv.music.repository.SongRepository
 import com.quannv.music.utilities.Event
 import com.quannv.music.views.home.models.Song
 
-class HomeVM(private val songRepository: SongRepository) : BaseViewModel() {
+class SongViewModel(private val songRepository: SongRepository) : BaseViewModel() {
 
     private val _getSongsResponse = MutableLiveData<Event<OutcomeState<List<Song>>>>()
     val songTokensResponse: MutableLiveData<Event<OutcomeState<List<Song>>>>

@@ -6,13 +6,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.*
-import android.view.ViewGroup.MarginLayoutParams
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.Insets
 import androidx.core.view.*
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -33,57 +31,19 @@ import java.util.*
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     private var snackbar: Snackbar? = null
-    open lateinit var rootView: VB
+    open lateinit var binding: VB
     var posTop = 0
     var posBottom = 0
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        rootView = getViewBinding()
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        val windowInsetsController =
-            ViewCompat.getWindowInsetsController(window.decorView)
+        binding = getViewBinding()
+        window?.changeStatusBarColor(this, R.color.color_menu)
+//        window?.lightStatusBar()
 
-        windowInsetsController?.isAppearanceLightNavigationBars = true
-        ViewCompat.setOnApplyWindowInsetsListener(rootView.root) { v, windowInsets ->
-            val insets: Insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-            // Apply the insets as a margin to the view. Here the system is setting
-            // only the bottom, left, and right dimensions, but apply whichever insets are
-            // appropriate to your layout. You can also update the view padding
-            // if that's more appropriate.
-            val mlp = v.layoutParams as MarginLayoutParams
-            mlp.leftMargin = insets.left
-            mlp.bottomMargin = insets.bottom
-            mlp.rightMargin = insets.right
-            v.layoutParams = mlp
-            WindowInsetsCompat.CONSUMED
-        }
-/*
-        ViewCompat.setWindowInsetsAnimationCallback(
-            rootView.root,
-            object : WindowInsetsAnimationCompat.Callback(DISPATCH_MODE_STOP) {
-                override fun onProgress(
-                    insets: WindowInsetsCompat,
-                    runningAnimations: MutableList<WindowInsetsAnimationCompat>
-                ): WindowInsetsCompat {
+        setContentView(binding.root)
 
-                    posBottom = (insets.getInsets(WindowInsetsCompat.Type.ime()).bottom)
-                    rootView.root.updateLayoutParams<MarginLayoutParams> {
-                        updateMargins(
-                            top = posTop,
-                            bottom = posBottom
-                        )
-                    }
-                    return insets
-                }
-            }
-        )
-*/
-
-        window?.lightStatusBar()
-
-        setContentView(rootView.root)
 
         EventBus.getDefault().register(this)
 
@@ -93,29 +53,6 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
         setupEventControl()
     }
-
-/*    fun resizeWhenShowKeyBoard(mView: View) {
-
-        ViewCompat.setWindowInsetsAnimationCallback(
-            mView,
-            object : WindowInsetsAnimationCompat.Callback(DISPATCH_MODE_STOP) {
-                override fun onProgress(
-                    insets: WindowInsetsCompat,
-                    runningAnimations: MutableList<WindowInsetsAnimationCompat>
-                ): WindowInsetsCompat {
-
-                    posBottom = (insets.getInsets(WindowInsetsCompat.Type.ime()).bottom)
-                    mView.updateLayoutParams<MarginLayoutParams> {
-                        updateMargins(
-                            top = posTop,
-                            bottom = posBottom
-                        )
-                    }
-                    return insets
-                }
-            }
-        )
-    }*/
 
     override fun onDestroy() {
         EventBus.getDefault().unregister(this)
@@ -138,7 +75,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     @SuppressLint("ClickableViewAccessibility")
     open fun setupView() {
-        rootView.root.setOnTouchListener { view, motionEvent ->
+        binding.root.setOnTouchListener { view, motionEvent ->
             if ((motionEvent.action == MotionEvent.ACTION_UP) && (view !is EditText))
                 if (Utils.shared.checkKeyboardVisible()) {
                     Utils.shared.showHideKeyBoard(this, false)

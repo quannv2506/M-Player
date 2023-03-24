@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="song"
+            type="com.quannv.music.views.home.models.Song" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        tools:background="@color/color_menu">
+
+        <ImageView
+            android:id="@+id/imgSong"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/icon_default_token" />
+
+        <com.quannv.music.customizes.CustomTextViewFonts
+            android:id="@+id/tvName"
+            style="@style/Text.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:textColor="@color/text_white_color"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/tvArtist"
+            app:layout_constraintEnd_toStartOf="@id/imgMenu"
+            app:layout_constraintStart_toEndOf="@id/imgSong"
+            app:layout_constraintTop_toTopOf="@id/imgSong"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="BSC" />
+
+        <com.quannv.music.customizes.CustomTextViewFonts
+            android:id="@+id/tvArtist"
+            style="@style/Text.Regular"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/text_gray_color"
+            android:layout_alignBottom="@+id/imgSong"
+            app:layout_constraintBottom_toBottomOf="@+id/imgSong"
+            app:layout_constraintEnd_toEndOf="@id/tvName"
+            app:layout_constraintStart_toStartOf="@id/tvName"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            tools:text="Bitcoin" />
+
+        <ImageView
+            android:id="@+id/imgMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:src="@drawable/ic_dot_menu"
+            app:layout_constraintBottom_toBottomOf="@id/imgSong"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imgSong" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
