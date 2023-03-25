@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
+import com.quannv.music.R
 import com.quannv.music.bases.DataBoundListAdapter
 import com.quannv.music.databinding.ItemAlbumBinding
 import com.quannv.music.databinding.ItemSongBinding
@@ -42,7 +43,8 @@ class AlbumAdapter(
             album = item
             val artworkUri = Uri.parse("content://media/external/audio/albumart")
             val uriArt = ContentUris.withAppendedId(artworkUri, item.id ?: 0L)
-            Glide.with(context).load(uriArt).into(imgAlbum)
+            Glide.with(context).load(uriArt).placeholder(R.drawable.ic_music_default)
+                .error(R.drawable.ic_music_default).into(imgAlbum)
             root.clickWithDebounce {
                 onItemClick?.invoke(item)
             }

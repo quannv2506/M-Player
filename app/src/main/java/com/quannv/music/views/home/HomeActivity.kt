@@ -2,6 +2,7 @@ package com.quannv.music.views.home
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.os.Build
 import android.view.View
 import android.widget.TextView
 import androidx.core.app.ActivityCompat
@@ -12,9 +13,9 @@ import com.quannv.music.bases.BaseActivity
 import com.quannv.music.databinding.ActivityHomeBinding
 import com.quannv.music.utilities.clickWithDebounce
 import com.quannv.music.utilities.toast
-import com.quannv.music.viewmodel.AlbumViewModel
-import com.quannv.music.viewmodel.ArtistViewModel
-import com.quannv.music.viewmodel.SongViewModel
+import com.quannv.music.views.viewmodel.AlbumViewModel
+import com.quannv.music.views.viewmodel.ArtistViewModel
+import com.quannv.music.views.viewmodel.SongViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : BaseActivity<ActivityHomeBinding>() {
@@ -34,6 +35,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         super.setupView()
         setText()
         setAdapter()
+        checkPermission()
     }
 
     override fun setupEventControl() {
@@ -81,11 +83,6 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         super.observeHandle()
     }
 
-    override fun onResume() {
-        super.onResume()
-        checkPermission()
-    }
-
     private fun setText() {
         with(binding) {
             tvSong.text = getString(R.string.str_songs)
@@ -120,9 +117,18 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
                 Manifest.permission.READ_EXTERNAL_STORAGE
             ) != PackageManager.PERMISSION_GRANTED
         ) {
+            val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                arrayOf(
+                    Manifest.permission.READ_MEDIA_AUDIO
+                )
+            } else {
+                arrayOf(
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                )
+            }
             ActivityCompat.requestPermissions(
                 this,
-                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                permissions,
                 MY_REQUEST_PERMISSION
             )
         } else {
@@ -136,7 +142,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == MY_REQUEST_PERMISSION) {
+        if ( requestCode == MY_REQUEST_PERMISSION) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getData()
             } else {

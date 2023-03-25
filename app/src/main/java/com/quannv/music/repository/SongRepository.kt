@@ -38,10 +38,14 @@ class SongRepository(private val contentResolver: ContentResolver) {
             val cursor = contentResolver.query(
                 musicUri, projection, selection, null, null
             )
-            while (cursor?.moveToNext() == true) {
-                val song = convertToSong(cursor)
-                songs.add(song)
+            if (cursor != null){
+                while (cursor.moveToNext()) {
+                    val song = convertToSong(cursor)
+                    songs.add(song)
+                }
+                cursor.close()
             }
+
             songs
         }
     }

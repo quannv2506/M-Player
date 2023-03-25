@@ -9,7 +9,7 @@ data class Artist(
     var artist: String? = "",
     var numberOfAlbums: Int? = 0,
     var numberOfSongs: Int? = 0,
-    var artistImage: Int? = 0,
+    var artistImage: String? = "",
 ) : Parcelable {
 
     override fun equals(other: Any?): Boolean {

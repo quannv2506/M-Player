@@ -13,7 +13,7 @@ class ArtistRepository(private val contentResolver: ContentResolver) {
         val artist = Artist()
         artist.id = cursor.getLong(0)
         artist.artist = cursor.getString(1)
-        artist.numberOfSongs = cursor.getInt(2)
+        artist.numberOfAlbums = cursor.getInt(2)
         artist.numberOfSongs = cursor.getInt(3)
         return artist
     }
@@ -39,6 +39,22 @@ class ArtistRepository(private val contentResolver: ContentResolver) {
                 val artist = convertToArtist(cursor)
                 artists.add(artist)
             }
+            cursor?.close()
+/*            val selection = MediaStore.Images.Media.ARTIST + "=?"
+            val selectionArgs = arrayOf("artist_name")
+            val projectionImage = arrayOf(MediaStore.Images.Media.DATA)
+
+            val cursorImage = contentResolver.query(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                projectionImage,
+                selection,
+                selectionArgs,
+                null
+            )
+            while (cursorImage?.moveToNext() == true){
+
+                cursorImage.close()
+            }*/
             artists
         }
     }

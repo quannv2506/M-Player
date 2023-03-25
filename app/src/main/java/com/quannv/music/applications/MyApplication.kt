@@ -13,9 +13,9 @@ import com.quannv.music.repository.TokenRepository
 import com.quannv.music.utilities.LogUtils
 import com.quannv.music.utilities.UserDefaults
 import com.quannv.music.utilities.Utils
-import com.quannv.music.viewmodel.AlbumViewModel
-import com.quannv.music.viewmodel.ArtistViewModel
-import com.quannv.music.viewmodel.SongViewModel
+import com.quannv.music.views.viewmodel.AlbumViewModel
+import com.quannv.music.views.viewmodel.ArtistViewModel
+import com.quannv.music.views.viewmodel.SongViewModel
 import io.reactivex.plugins.RxJavaPlugins
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext

@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
+        android:paddingStart="16dp"
         android:paddingVertical="12dp"
         tools:background="@color/color_menu">
 
@@ -37,6 +37,8 @@
             android:layout_marginHorizontal="8dp"
             android:textColor="@color/text_white_color"
             android:textSize="16sp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:text="@{song.title}"
             app:layout_constraintBottom_toTopOf="@id/tvArtist"
             app:layout_constraintEnd_toStartOf="@id/imgMenu"
@@ -67,6 +69,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:padding="8dp"
+            android:layout_marginEnd="4dp"
             android:src="@drawable/ic_dot_menu"
             app:layout_constraintBottom_toBottomOf="@id/imgSong"
             app:layout_constraintEnd_toEndOf="parent"

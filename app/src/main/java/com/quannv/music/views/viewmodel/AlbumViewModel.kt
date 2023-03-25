@@ -1,4 +1,4 @@
-package com.quannv.music.viewmodel
+package com.quannv.music.views.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.quannv.music.bases.BaseViewModel

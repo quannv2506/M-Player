@@ -8,7 +8,7 @@ import com.quannv.music.bases.OutcomeState
 import com.quannv.music.databinding.FragmentSongBinding
 import com.quannv.music.utilities.LogUtils
 import com.quannv.music.utilities.observeEventUnhandled
-import com.quannv.music.viewmodel.SongViewModel
+import com.quannv.music.views.viewmodel.SongViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class SongFragment : BaseFragment<FragmentSongBinding>() {

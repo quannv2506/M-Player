@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import com.quannv.music.bases.BaseFragment
 import com.quannv.music.databinding.FragmentDetailBinding
 import com.quannv.music.repository.TokenRepository
-import com.quannv.music.viewmodel.SongViewModel
+import com.quannv.music.views.viewmodel.SongViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
